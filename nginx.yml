@@ -1,0 +1,16 @@
+root@ip-172-31-7-94:/etc/ansible# cat nginx.yml
+---
+- hosts: HarshalDATA
+  become: true
+  tasks:
+    - name: Update apt cache and install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Start nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: true
